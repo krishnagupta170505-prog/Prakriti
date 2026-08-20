@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { toPng } from 'html-to-image';
 import { PrakritiScores } from '../../types';
@@ -18,7 +18,17 @@ export const PassportScreen: React.FC<PassportScreenProps> = ({ scores, onRetake
   const [userName, setUserName] = useState<string>(storage.getUserName());
   const [isEditingName, setIsEditingName] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [scannableUrl, setScannableUrl] = useState<string>('https://prakriti.vercel.app');
   const passportCardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // If deployed on Vercel or custom domain, use actual live origin so phone scans open the website
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        setScannableUrl(window.location.origin);
+      }
+    }
+  }, []);
 
   // Safe fallback scores
   const safeScores: PrakritiScores = scores || {
@@ -50,7 +60,7 @@ export const PassportScreen: React.FC<PassportScreenProps> = ({ scores, onRetake
 
     try {
       setToastMessage('Saving your passport image...');
-      const dataUrl = await toPng(passportCardRef.current, { quality: 0.95, pixelRatio: 2 });
+      const dataUrl = await toPng(passportCardRef.current, { quality: 0.98, pixelRatio: 3 });
       const link = document.createElement('a');
       link.download = `Prakriti-Passport-${userName.replace(/\s+/g, '-')}.png`;
       link.href = dataUrl;
@@ -65,14 +75,14 @@ export const PassportScreen: React.FC<PassportScreenProps> = ({ scores, onRetake
 
   const handleShare = async () => {
     soundManager.playTap();
-    const shareText = `🌿 My Prakriti Passport: ${profile.leanTitle} (${profile.archetype}) • Vata: ${safeScores.vataPercentage}%, Pitta: ${safeScores.pittaPercentage}%, Kapha: ${safeScores.kaphaPercentage}%. Find yours at Prakriti!`;
+    const shareText = `🌿 My Prakriti Passport: ${profile.leanTitle} (${profile.archetype}) • Vata: ${safeScores.vataPercentage}%, Pitta: ${safeScores.pittaPercentage}%, Kapha: ${safeScores.kaphaPercentage}%. Find yours at ${scannableUrl}!`;
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: `${userName}'s Prakriti Passport`,
           text: shareText,
-          url: window.location.href,
+          url: scannableUrl,
         });
       } catch {}
     } else {
@@ -83,8 +93,6 @@ export const PassportScreen: React.FC<PassportScreenProps> = ({ scores, onRetake
       } catch {}
     }
   };
-
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://prakriti-wellness.app';
 
   return (
     <div className="min-h-screen px-4 md:px-10 pt-20 pb-28 max-w-3xl mx-auto relative z-10 flex flex-col items-center">
@@ -233,15 +241,24 @@ export const PassportScreen: React.FC<PassportScreenProps> = ({ scores, onRetake
         {/* QR Code & Verification Strip */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-primary/20 pt-4 relative z-10">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white rounded-xl shadow-sm border border-outline-variant flex-shrink-0">
-              <QRCodeSVG value={currentUrl} size={64} level="M" />
+            <div className="p-2 bg-white rounded-2xl shadow-sm border border-outline-variant flex-shrink-0 flex items-center justify-center">
+              <QRCodeSVG
+                value={scannableUrl}
+                size={80}
+                level="H"
+                includeMargin={false}
+                fgColor="#1e1b4b"
+                bgColor="#ffffff"
+              />
             </div>
             <div>
               <span className="font-label-sm text-[10px] text-secondary font-bold uppercase tracking-wider block">
                 SCAN TO FIND YOUR PRAKRITI
               </span>
-              <span className="text-xs text-on-surface-variant font-medium">Yoga Club Mela</span>
-              <span className="text-[10px] text-on-surface-variant/70 block mt-0.5">8-Question Indicative Profile</span>
+              <span className="text-xs text-on-surface font-medium block">Yoga Club Mela Edition</span>
+              <span className="text-[10px] text-primary/80 font-mono font-semibold block mt-0.5 break-all">
+                {scannableUrl}
+              </span>
             </div>
           </div>
 
