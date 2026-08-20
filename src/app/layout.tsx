@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Sora } from 'next/font/google';
 import './globals.css';
 
@@ -13,6 +13,14 @@ const sora = Sora({
   variable: '--font-sora',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#faf8ff',
+};
 
 export const metadata: Metadata = {
   title: 'PRAKRITI — Decode Your Inner Nature',

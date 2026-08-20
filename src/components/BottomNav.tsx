@@ -9,8 +9,8 @@ interface BottomNavProps {
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({ currentScreen, onNavigate }) => {
-  // Suppress bottom nav on full immersive linear tasks (like quiz or breathing circle)
-  const isImmersiveScreen = ['quest', 'analyzing', 'breath_quest'].includes(currentScreen);
+  // Suppress bottom nav on full immersive linear tasks (like quiz or breathing circle or stall poster)
+  const isImmersiveScreen = ['quest', 'analyzing', 'breath_quest', 'scan_stall'].includes(currentScreen);
   if (isImmersiveScreen) return null;
 
   const isQuestActive = ['landing', 'welcome', 'quest', 'reveal'].includes(currentScreen);
