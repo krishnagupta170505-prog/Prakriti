@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prakriti Quest</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Sora:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from instructions -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#581d87",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#283044",
+                      "on-surface-variant": "#464554",
+                      "surface-container": "#eaedff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#141b2c",
+                      "background": "#faf8ff",
+                      "tertiary-fixed-dim": "#bfc6dd",
+                      "surface-container-highest": "#dae2fd",
+                      "surface-variant": "#dae2fd",
+                      "primary": "#4648d4",
+                      "on-primary-container": "#fffbff",
+                      "on-secondary-fixed-variant": "#632892",
+                      "surface-bright": "#faf8ff",
+                      "secondary-container": "#cb8ffd",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-tertiary-container": "#fefcff",
+                      "tertiary-fixed": "#dbe2fa",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#3f4759",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "outline-variant": "#c7c4d7",
+                      "on-secondary-fixed": "#2d004f",
+                      "surface-container-high": "#e2e7ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#7c43ab",
+                      "tertiary": "#545c70",
+                      "inverse-primary": "#c0c1ff",
+                      "primary-container": "#6063ee",
+                      "tertiary-container": "#6d7489",
+                      "on-background": "#131b2e",
+                      "on-surface": "#131b2e",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f2f3ff",
+                      "secondary-fixed-dim": "#e0b6ff",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#07006c",
+                      "surface": "#faf8ff",
+                      "secondary-fixed": "#f2daff",
+                      "inverse-on-surface": "#eef0ff",
+                      "outline": "#767586",
+                      "surface-dim": "#d2d9f4",
+                      "surface-tint": "#494bd6",
+                      "primary-fixed": "#e1e0ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "24px",
+                      "stack-lg": "48px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "stack-sm": "12px",
+                      "margin-desktop": "40px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Sora"
+                      ],
+                      "body-lg": [
+                              "Sora"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Sora"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Sora"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Mystic Modernism Background Layering */
+        .ambient-bg {
+            background: radial-gradient(circle at 10% 20%, rgba(124, 67, 171, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(70, 72, 212, 0.08) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Glassmorphism utilities */
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(70, 72, 212, 0.05);
+        }
+
+        /* Custom progress animation */
+        @keyframes fillProgress {
+            from { stroke-dasharray: 0 100; }
+            to { stroke-dasharray: 26.6 100; /* 4/15 approx 26.6% */ }
+        }
+        .progress-circle {
+            animation: fillProgress 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen relative overflow-x-hidden">
+<!-- Ambient Animated Background -->
+<div class="fixed inset-0 ambient-bg pointer-events-none"></div>
+<!-- TopAppBar (From Shared Components JSON) -->
+<!-- Applying exact styles and structural commands from JSON -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center backdrop-blur-xl border-b border-white/40 dark:border-white/10 shadow-sm bg-transparent">
+<!-- Leading Icon -->
+<button class="cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">settings_heart</span>
+</button>
+<!-- Headline / Brand -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim uppercase">
+            PRAKRITI
+        </h1>
+<!-- Trailing Avatar -->
+<button class="cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity rounded-full overflow-hidden w-10 h-10 border border-white/40">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small, elegant circular mandala icon acting as a user profile avatar. The mandala features intricate, minimalist geometric patterns in a serene light lavender and deep indigo color palette, set against a glowing white background. High-quality digital art, flat lighting, mystic modernism style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC72XpT9xWjRcZFfX1FChBPLBJExfEVUzxte9-yKHgUudw9eliuOG93-Nui6eowdoJfbu2sLg8_KgxlNjtuL06TdmtFuAxroXQw1FDpP3J-elqRttS5gFnlat8YqBJhQ4SnZMnNaZX5MvvbHJDCkp7qnZMM9VAmDYoqGr8kqT5g22GXqi144RXkl2DsFLP3QLs5t8OIN2YZb4UJrR-FMCD8m72HwjMY-szaKu7173nGOdIExcZmg6_YNQ"/>
+</button>
+</header>
+<!-- Main Content Canvas (Navigation Shell Suppressed for Task-Focused Flow) -->
+<main class="pt-[100px] pb-stack-lg px-margin-mobile max-w-container-max mx-auto md:px-margin-desktop min-h-screen flex flex-col">
+<!-- Quest Header & Progress -->
+<div class="flex flex-col items-center justify-center mb-stack-lg animate-[fadeIn_0.5s_ease-out]">
+<h2 class="font-label-md text-label-md text-secondary tracking-[0.2em] uppercase mb-4 opacity-80">Prakriti Quest</h2>
+<div class="relative flex items-center justify-center w-24 h-24 mb-2">
+<!-- Decorative Mandala/Progress Arc -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background track -->
+<path class="text-surface-dim" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100 100" stroke-width="1.5"></path>
+<!-- Progress fill -->
+<path class="text-primary progress-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="0 100" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+<!-- Central Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center font-body-md text-primary">
+<span class="text-[10px] font-bold">04</span>
+<div class="w-4 h-[1px] bg-outline-variant my-[2px]"></div>
+<span class="text-[10px] text-on-surface-variant">15</span>
+</div>
+</div>
+</div>
+<!-- Scenario Card (Glassmorphism Bento Style) -->
+<section class="glass-card rounded-[2rem] p-8 md:p-12 mb-stack-md relative overflow-hidden transform transition-transform duration-500 hover:shadow-xl">
+<!-- Subtle glow behind text -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/5 rounded-full blur-[40px] z-0"></div>
+<div class="relative z-10 text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4 opacity-70">bedtime</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">It’s 10:30 AM on Sunday.</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    You wake up without an alarm.<br/>What happens next?
+                </p>
+</div>
+</section>
+<!-- Answer Choices -->
+<section class="flex flex-col gap-unit w-full max-w-lg mx-auto mt-auto">
+<!-- Option 1 -->
+<button class="choice-btn group relative w-full text-left glass-panel rounded-xl p-4 md:p-6 transition-all duration-300 ease-out hover:bg-white/70 hover:border-primary/30 hover:shadow-[0_4px_20px_-4px_rgba(70,72,212,0.15)] flex items-center justify-between overflow-hidden">
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors duration-300 bg-white/50">
+<span class="indicator-icon material-symbols-outlined text-[16px] text-transparent group-hover:text-primary transition-colors">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors duration-300">I already have plans.</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none"></div>
+</button>
+<!-- Option 2 -->
+<button class="choice-btn group relative w-full text-left glass-panel rounded-xl p-4 md:p-6 transition-all duration-300 ease-out hover:bg-white/70 hover:border-primary/30 hover:shadow-[0_4px_20px_-4px_rgba(70,72,212,0.15)] flex items-center justify-between overflow-hidden">
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors duration-300 bg-white/50">
+<span class="indicator-icon material-symbols-outlined text-[16px] text-transparent group-hover:text-primary transition-colors">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors duration-300">Time to get things done.</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none"></div>
+</button>
+<!-- Option 3 -->
+<button class="choice-btn group relative w-full text-left glass-panel rounded-xl p-4 md:p-6 transition-all duration-300 ease-out hover:bg-white/70 hover:border-primary/30 hover:shadow-[0_4px_20px_-4px_rgba(70,72,212,0.15)] flex items-center justify-between overflow-hidden">
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center group-hover:border-primary transition-colors duration-300 bg-white/50">
+<span class="indicator-icon material-symbols-outlined text-[16px] text-transparent group-hover:text-primary transition-colors">check</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors duration-300">Five more minutes.</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none"></div>
+</button>
+</section>
+<!-- Bottom padding for mobile aesthetics -->
+<div class="h-stack-lg"></div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.choice-btn');
+            
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    
+                    // Reset all buttons
+                    buttons.forEach(b => {
+                        b.classList.remove('ring-2', 'ring-primary/50', 'bg-surface-container-high', 'scale-[1.02]');
+                        const icon = b.querySelector('.indicator-icon');
+                        icon.classList.remove('text-primary');
+                        icon.classList.add('text-transparent');
+                        b.querySelector('span.font-body-md').classList.remove('font-bold', 'text-primary');
+                    });
+
+                    // Activate clicked button
+                    this.classList.add('ring-2', 'ring-primary/50', 'bg-surface-container-high', 'scale-[1.02]');
+                    const icon = this.querySelector('.indicator-icon');
+                    icon.classList.remove('text-transparent');
+                    icon.classList.add('text-primary');
+                    this.querySelector('span.font-body-md').classList.add('font-bold', 'text-primary');
+
+                    // Particle Effect
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    for (let i = 0; i < 8; i++) {
+                        createParticle(this, x, y);
+                    }
+                    
+                    // Simulate progression delay (Optional, for realistic feel)
+                    // setTimeout(() => { /* proceed to next question */ }, 800);
+                });
+            });
+
+            function createParticle(parent, x, y) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute w-1.5 h-1.5 rounded-full pointer-events-none z-20';
+                
+                // Randomize colors between primary and secondary for mystic feel
+                const colors = ['bg-primary', 'bg-secondary', 'bg-secondary-container'];
+                particle.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                parent.appendChild(particle);
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 30 + Math.random() * 50;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 0.8 },
+                    { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 600 + Math.random() * 400,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                }).onfinish = () => particle.remove();
+            }
+        });
+    </script>
+</body></html>

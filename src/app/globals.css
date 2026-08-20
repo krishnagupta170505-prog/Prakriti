@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-playfair: 'Playfair Display', serif;
+    --font-sora: 'Sora', sans-serif;
+  }
+
+  body {
+    background-color: #faf8ff;
+    color: #131b2e;
+    font-family: var(--font-sora), sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Glassmorphism helpers matching Stitch design */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(70, 72, 212, 0.06);
+}
+
+.btn-glow {
+  box-shadow: 0 0 25px rgba(70, 72, 212, 0.35);
+}
+
+.ambient-underglow {
+  box-shadow: 0 0 80px 20px rgba(124, 67, 171, 0.2);
+}
+
+.ambient-bg {
+  background: radial-gradient(circle at 10% 20%, rgba(124, 67, 171, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(70, 72, 212, 0.1) 0%, transparent 50%);
+}
+
+/* Floating labels animation matching Stitch landing */
+@keyframes drift {
+  0% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+  50% { transform: translateY(-15px) translateX(6px); opacity: 1; }
+  100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+}
+
+.floating-label {
+  animation: drift 8s ease-in-out infinite;
+}
+
+.floating-label:nth-child(even) {
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.floating-label:nth-child(3n) {
+  animation-duration: 9s;
+  animation-delay: -5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(70, 72, 212, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(70, 72, 212, 0.4);
+}

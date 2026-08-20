@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Prakriti Profile - Pitta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Sora:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#545c70",
+                        "tertiary-fixed": "#dbe2fa",
+                        "on-background": "#131b2e",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-surface": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "on-primary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "surface": "#faf8ff",
+                        "tertiary-container": "#6d7489",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#7c43ab",
+                        "on-tertiary-fixed": "#141b2c",
+                        "background": "#faf8ff",
+                        "on-tertiary-container": "#fefcff",
+                        "tertiary-fixed-dim": "#bfc6dd",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "primary": "#4648d4",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#cb8ffd",
+                        "on-secondary-fixed-variant": "#632892",
+                        "on-surface-variant": "#464554",
+                        "secondary-fixed-dim": "#e0b6ff",
+                        "on-tertiary-fixed-variant": "#3f4759",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "outline": "#767586",
+                        "surface-container": "#eaedff",
+                        "on-primary-fixed": "#07006c",
+                        "secondary-fixed": "#f2daff",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#494bd6",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary-container": "#581d87",
+                        "inverse-primary": "#c0c1ff",
+                        "on-secondary-fixed": "#2d004f",
+                        "error": "#ba1a1a",
+                        "primary-container": "#6063ee",
+                        "outline-variant": "#c7c4d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Sora"],
+                        "headline-sm": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Sora"],
+                        "label-sm": ["Sora"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Sora"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf8ff; /* Fallback */
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(70, 72, 212, 0.05);
+        }
+
+        .ambient-underglow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Entrance Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .expandable-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease-out;
+        }
+        .expandable-content.expanded {
+            grid-template-rows: 1fr;
+        }
+        .expandable-inner {
+            overflow: hidden;
+        }
+        
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        .expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-on-background overflow-x-hidden min-h-screen bg-gradient-to-br from-surface to-surface-container-high relative">
+<!-- Atmospheric Particles Canvas -->
+<canvas class="fixed inset-0 w-full h-full pointer-events-none z-0" id="ambient-particles"></canvas>
+<!-- Ambient Glows -->
+<div class="ambient-underglow bg-primary w-[300px] h-[300px] top-[-100px] right-[-50px]"></div>
+<div class="ambient-underglow bg-secondary w-[250px] h-[250px] bottom-[20%] left-[-50px]"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center backdrop-blur-xl border-b border-white/40 shadow-sm bg-transparent">
+<div class="flex items-center gap-unit cursor-pointer active:scale-95 duration-300">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-weight="fill">settings_heart</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim text-center">PRAKRITI</h1>
+<div class="cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A detailed digital avatar portrait of a modern, stylish woman with a calm, focused expression. The visual style is premium and minimalist, bathed in soft, high-key white light characteristic of a light-mode design system. The background is a very subtle, clean gradient of pale lavender and pristine white. The overall mood is serene, highly polished, and sophisticated, reflecting a premium wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTVAh9Vtq0dAUhE3BAq4cnrm64EfijJXry0N-P_kZKj7rKgvLeVUwrcbVVGaQc9Sd5AweyOxFLFkM4K3PdGccI7pGzumouQ7wrTqajERiadmKFdOiMsyBQpBaRWvtD0cE8oyTk80XHtjUjDyyfZFH9H6dnY1SLs-gRFj0rJi9LKr7JPR-RH-18E3DpKvhKgoOKOaMW0NBKvqYISGghbO0Gg8X8MOUDt2WRwGVxOyGa6kjE-LbKMIe1gA"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 pt-[100px] pb-[120px] px-margin-mobile max-w-container-max mx-auto md:px-margin-desktop flex flex-col gap-stack-lg">
+<!-- Hero Profile Section -->
+<section class="flex flex-col items-center text-center reveal-on-scroll">
+<div class="w-32 h-32 rounded-full glass-panel flex items-center justify-center mb-stack-md relative">
+<div class="absolute inset-2 rounded-full border border-primary/30 animate-pulse"></div>
+<span class="material-symbols-outlined text-display-lg-mobile text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<p class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-2">Your Archetype</p>
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-unit">The Transformer</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[400px]">Driven by Agni, you possess a sharp intellect, unyielding focus, and the power to metabolize ideas into action.</p>
+</section>
+<!-- Bento Grid / Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Card 1: Element -->
+<article class="glass-panel rounded-xl p-6 reveal-on-scroll">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Your Element</h3>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Agni &amp; Jala</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Fire and Water converge within you. This manifests as intense digestion—both of food and complex information.</p>
+<div class="expand-wrapper">
+<button class="expand-trigger flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors">
+                        Learn More <span class="material-symbols-outlined text-[18px] expand-icon">expand_more</span>
+</button>
+<div class="expandable-content mt-2">
+<div class="expandable-inner border-t border-white/30 pt-3">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                In Ayurveda, Pitta is the energy of transformation. It governs metabolism, temperature, and comprehension. When balanced, this elemental mix grants you radiance, clarity of thought, and strong leadership capabilities. You thrive when you have a clear purpose to pour your energetic fire into.
+                            </p>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Strengths -->
+<article class="glass-panel rounded-xl p-6 reveal-on-scroll" style="transition-delay: 100ms;">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Natural Strengths</h3>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Focus &amp; Drive</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">A natural born leader. You possess razor-sharp intellect, courage, and an innate ability to organize and execute.</p>
+<div class="expand-wrapper">
+<button class="expand-trigger flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors">
+                        Learn More <span class="material-symbols-outlined text-[18px] expand-icon">expand_more</span>
+</button>
+<div class="expandable-content mt-2">
+<div class="expandable-inner border-t border-white/30 pt-3">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Your cognitive digestion is unparalleled. You can quickly assess situations, form strategies, and communicate them effectively. People are drawn to your warmth and decisive nature. Your precision makes you excellent at problem-solving, debates, and mastering new skills efficiently.
+                            </p>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Balance Zone (Full width imagery) -->
+<article class="glass-panel rounded-xl overflow-hidden reveal-on-scroll md:col-span-2" style="transition-delay: 200ms;">
+<div class="h-48 w-full relative">
+<div class="bg-cover bg-center w-full h-full absolute inset-0 opacity-80 mix-blend-multiply" data-alt="A highly atmospheric, abstract digital rendering of cool, flowing water intersecting with smooth, white geometric marble shapes. The scene represents tranquility and cooling energy, perfectly balanced against a pristine, light-mode background. The color palette relies on icy blues, soft lavenders, and crisp whites. Soft, volumetric lighting creates a serene, premium, and calming mystic modernism aesthetic without heavy shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgzzENeyL6QiSr98-gMg19oompViGZl364r43XABDGIPstQQz6-MwLe8w6wBY_VKe35xveRhEvlDjFszJZzERp28oIJzn7Ubs7OIzF2-STLeq3A1y6VEAV6Vj1JDJVY1SHmq82JjBoeNX1e8tJG3qgRUNapiUu0wy88XfezLgIytXM2HN-DoWEzQM9RJRhVRwccwRvaPnCvDJP-DfIVLUF4mN9MXQIl0JRIDLQqde5AmyQP3MeTwP3nw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+<div class="absolute bottom-4 left-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/50 backdrop-blur-md flex items-center justify-center border border-white/60">
+<span class="material-symbols-outlined text-primary">ac_unit</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Your Balance Zone</h3>
+</div>
+</div>
+<div class="p-6 pt-2">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Cooling &amp; Restorative</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Because your internal fire burns bright, you must actively seek cooling environments, foods, and practices to prevent burnout and irritability.</p>
+<div class="expand-wrapper">
+<button class="expand-trigger flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors">
+                            Learn More <span class="material-symbols-outlined text-[18px] expand-icon">expand_more</span>
+</button>
+<div class="expandable-content mt-2">
+<div class="expandable-inner border-t border-white/30 pt-3">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Prioritize sweet, bitter, and astringent tastes. Engage in activities near water or in nature during the cooler parts of the day. Avoid excessive competition and allow yourself unstructured time. Cultivating a mindset of surrender and playfulness is crucial to maintaining your dynamic equilibrium.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: College Energy -->
+<article class="glass-panel rounded-xl p-6 reveal-on-scroll" style="transition-delay: 300ms;">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">school</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">College Energy</h3>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">The Goal-Getter</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Highly ambitious and organized. You are likely the one leading group projects and maintaining an impeccable schedule.</p>
+<div class="expand-wrapper">
+<button class="expand-trigger flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors">
+                        Learn More <span class="material-symbols-outlined text-[18px] expand-icon">expand_more</span>
+</button>
+<div class="expandable-content mt-2">
+<div class="expandable-inner border-t border-white/30 pt-3">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                While your drive ensures academic success, beware of perfectionism. Remember that learning is a journey, not just a destination to be conquered. Balance your intense study sessions with creative, non-competitive hobbies to keep your mind flexible.
+                            </p>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 5: Yoga Connection -->
+<article class="glass-panel rounded-xl p-6 reveal-on-scroll" style="transition-delay: 400ms;">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">self_improvement</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Yoga Connection</h3>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Moderation &amp; Flow</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Your practice should focus on releasing heat and tension rather than building more of it. Embrace fluidity.</p>
+<div class="expand-wrapper">
+<button class="expand-trigger flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors">
+                        Learn More <span class="material-symbols-outlined text-[18px] expand-icon">expand_more</span>
+</button>
+<div class="expandable-content mt-2">
+<div class="expandable-inner border-t border-white/30 pt-3">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Favor Moon Salutations over intense Sun Salutations. Incorporate forward folds, twists to massage the digestive organs, and cooling pranayama like Sheetali (cooling breath). Avoid practicing in hot rooms or pushing past 80% of your physical capacity. Let your practice be a moving meditation of surrender.
+                            </p>
+</div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-6 md:pb-4 bg-white/50 dark:bg-on-background/30 backdrop-blur-2xl border-t border-white/40 dark:border-white/10 shadow-[0_-10px_40px_-15px_rgba(70,72,212,0.3)] rounded-t-xl md:hidden">
+<!-- Tab 1: Quest -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1">explore</span>
+<span class="font-label-sm text-label-sm">Quest</span>
+</div>
+<!-- Tab 2: Wisdom -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="font-label-sm text-label-sm">Wisdom</span>
+</div>
+<!-- Tab 3: Pulse -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1">flare</span>
+<span class="font-label-sm text-label-sm">Pulse</span>
+</div>
+<!-- Tab 4: Profile (ACTIVE based on exact match rule for "Prakriti Profile") -->
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/20 rounded-full px-4 py-1 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm font-bold">Profile</span>
+</div>
+</nav>
+<!-- Interactions Script -->
+<script>
+        // --- Expandable Cards Logic ---
+        document.querySelectorAll('.expand-trigger').forEach(button => {
+            button.addEventListener('click', () => {
+                const wrapper = button.closest('.expand-wrapper');
+                const content = wrapper.querySelector('.expandable-content');
+                const icon = button.querySelector('.expand-icon');
+                
+                content.classList.toggle('expanded');
+                wrapper.classList.toggle('expanded'); // For icon rotation
+            });
+        });
+
+        // --- Scroll Reveal Animation ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Ambient Particles Logic ---
+        const canvas = document.getElementById('ambient-particles');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * -0.5 - 0.1;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.y < 0) this.y = height;
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(124, 67, 171, ${this.opacity})`; // Secondary color tint
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+
+        // Initialize
+        resize();
+        initParticles();
+        animateParticles();
+    </script>
+</body></html>

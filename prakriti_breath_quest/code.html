@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Prakriti - Breath Quest</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Sora:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#767586",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#07006c",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#494bd6",
+                      "surface-variant": "#dae2fd",
+                      "surface-container-highest": "#dae2fd",
+                      "on-background": "#131b2e",
+                      "on-surface-variant": "#464554",
+                      "inverse-on-surface": "#eef0ff",
+                      "tertiary-container": "#6d7489",
+                      "on-tertiary-container": "#fefcff",
+                      "primary": "#4648d4",
+                      "inverse-primary": "#c0c1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#bfc6dd",
+                      "secondary-fixed-dim": "#e0b6ff",
+                      "on-surface": "#131b2e",
+                      "surface-container-high": "#e2e7ff",
+                      "on-secondary-fixed": "#2d004f",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-secondary-fixed-variant": "#632892",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#545c70",
+                      "primary-container": "#6063ee",
+                      "surface": "#faf8ff",
+                      "inverse-surface": "#283044",
+                      "surface-container": "#eaedff",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#faf8ff",
+                      "on-tertiary-fixed": "#141b2c",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#c7c4d7",
+                      "on-tertiary-fixed-variant": "#3f4759",
+                      "surface-dim": "#d2d9f4",
+                      "primary-fixed": "#e1e0ff",
+                      "secondary-fixed": "#f2daff",
+                      "on-secondary-container": "#581d87",
+                      "tertiary-fixed": "#dbe2fa",
+                      "surface-container-low": "#f2f3ff",
+                      "secondary-container": "#cb8ffd",
+                      "background": "#faf8ff",
+                      "on-primary-container": "#fffbff",
+                      "error": "#ba1a1a",
+                      "secondary": "#7c43ab",
+                      "on-primary-fixed-variant": "#2f2ebe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1200px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "stack-sm": "12px",
+                      "stack-md": "24px",
+                      "margin-desktop": "40px",
+                      "stack-lg": "48px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Sora"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Sora"
+                      ],
+                      "body-lg": [
+                              "Sora"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Sora"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #eef0ff 0%, #dae2fd 50%, #f2daff 100%);
+            background-attachment: fixed;
+            overflow: hidden; /* Prevent scrolling during exercise */
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(70,72,212,0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transition: all 4s ease-in-out;
+        }
+
+        /* Breathing Animation */
+        .breath-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(70,72,212,0.1) 0%, rgba(203,143,253,0.2) 100%);
+            border: 2px solid rgba(70,72,212,0.3);
+            box-shadow: 0 0 40px rgba(70,72,212,0.1), inset 0 0 40px rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 4s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 4s ease;
+            position: relative;
+        }
+
+        .breath-circle::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            border: 1px solid rgba(203,143,253,0.3);
+            opacity: 0;
+            transition: all 4s ease;
+            transform: scale(0.8);
+        }
+
+        .state-inhale .breath-circle {
+            transform: scale(1.5);
+            box-shadow: 0 0 60px rgba(70,72,212,0.2), inset 0 0 20px rgba(255,255,255,0.8);
+        }
+        .state-inhale .breath-circle::before {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .state-hold .breath-circle {
+            transform: scale(1.5);
+            box-shadow: 0 0 40px rgba(70,72,212,0.3), inset 0 0 20px rgba(255,255,255,0.8);
+            border-color: rgba(203,143,253,0.5);
+        }
+
+        .state-exhale .breath-circle {
+            transform: scale(1);
+            box-shadow: 0 0 20px rgba(70,72,212,0.1), inset 0 0 40px rgba(255,255,255,0.5);
+        }
+
+        /* Animated Progress Ring */
+        .progress-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1s linear;
+            stroke-dasharray: 283; /* 2 * pi * r (45) */
+            stroke-dashoffset: 283;
+        }
+    </style>
+</head>
+<body class="text-on-background h-screen w-screen flex flex-col items-center justify-center relative">
+<!-- Ambient Background Elements -->
+<div class="ambient-glow top-1/4 left-1/4" id="glow1"></div>
+<div class="ambient-glow bottom-1/4 right-1/4" id="glow2" style="background: radial-gradient(circle, rgba(203,143,253,0.15) 0%, rgba(255,255,255,0) 70%);"></div>
+<!-- Top App Bar (Task-Focused - Minimal) -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center bg-transparent backdrop-blur-xl border-b border-white/40 shadow-sm">
+<button class="flex items-center text-primary hover:opacity-80 transition-opacity cursor-pointer active:scale-95 duration-300">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex items-center space-x-2">
+<img alt="Prakriti Logo" class="h-8 w-8 rounded-full object-cover border border-white/50" src="https://lh3.googleusercontent.com/aida/AP1WRLtX0iFvuMoJqhmeyv9nymxa0fsI2I6fEyM37CnkIz7PWD5raWGZX3IL5lZN_y3eEeFjMpIXVkdkIsYeeiZD1wgYtVW0SxcqK4lVpC_Ev0Jr3oOFNlqxuG7xX1TYRVppl1XOBIEJZCNJmpyjlhVfzaFeCiODZQwZKMJncyzhggiz88gO4lfx_2LHy_3E1HhbqOnKXjOT-u4ApAxx1brFltMB859uZPeBIA5qZgJGXRf4Afk7ueT-0hY9IfeQ"/>
+<h1 class="font-headline-sm text-headline-sm text-primary tracking-tighter">PRAKRITI</h1>
+</div>
+<button class="flex items-center text-primary hover:opacity-80 transition-opacity cursor-pointer active:scale-95 duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center w-full max-w-container-max px-margin-mobile relative z-10 pt-20 pb-24">
+<!-- Text Instruction -->
+<div class="text-center mb-stack-lg h-24 flex flex-col justify-end">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2 transition-opacity duration-500" id="instruction-text">Take a moment.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant transition-opacity duration-500" id="sub-instruction">Just breathe.</p>
+</div>
+<!-- Central Breathing Animation -->
+<div class="relative w-64 h-64 flex items-center justify-center mb-stack-lg" id="breath-container">
+<div class="breath-circle" id="breath-visual">
+<!-- Inner state text -->
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase opacity-0 transition-opacity duration-1000 absolute" id="breath-state">READY</span>
+</div>
+<!-- Optional SVGs for geometric flair -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20 animate-[spin_60s_linear_infinite]" viewbox="0 0 200 200">
+<circle class="text-primary" cx="100" cy="100" fill="none" r="90" stroke="currentColor" stroke-dasharray="4 8" stroke-width="0.5"></circle>
+</svg>
+</div>
+<!-- Timer & Controls Container -->
+<div class="glass-panel rounded-2xl p-6 w-full max-w-sm flex flex-col items-center shadow-lg relative">
+<!-- Timer Display -->
+<div class="relative w-24 h-24 mb-6 flex items-center justify-center">
+<svg class="progress-ring absolute inset-0 w-full h-full" height="96" viewbox="0 0 96 96" width="96">
+<circle class="text-white/30" cx="48" cy="48" fill="transparent" r="45" stroke="currentColor" stroke-width="4"></circle>
+<circle class="progress-ring__circle text-primary" cx="48" cy="48" fill="transparent" id="timer-progress" r="45" stroke="currentColor" stroke-width="4"></circle>
+</svg>
+<span class="font-headline-md text-headline-md text-primary" id="time-display">30</span>
+</div>
+<!-- Controls -->
+<div class="flex items-center justify-center space-x-6 w-full">
+<button class="w-12 h-12 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-white/50 transition-all duration-300 border border-transparent hover:border-white/40" id="btn-reset">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">restart_alt</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center shadow-[0_0_20px_rgba(70,72,212,0.4)] hover:shadow-[0_0_30px_rgba(70,72,212,0.6)] transition-all duration-300 active:scale-95 border border-white/20 relative overflow-hidden group" id="btn-play-pause">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-3xl z-10" id="icon-play-pause" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="w-12 h-12"></div> <!-- Spacer for alignment -->
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar suppressed as per rule for focused task screens -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const breathContainer = document.getElementById('breath-container');
+            const breathStateText = document.getElementById('breath-state');
+            const instructionText = document.getElementById('instruction-text');
+            const subInstructionText = document.getElementById('sub-instruction');
+            const btnPlayPause = document.getElementById('btn-play-pause');
+            const iconPlayPause = document.getElementById('icon-play-pause');
+            const btnReset = document.getElementById('btn-reset');
+            const timeDisplay = document.getElementById('time-display');
+            const timerProgress = document.getElementById('timer-progress');
+            
+            let isRunning = false;
+            let timeLeft = 30;
+            const totalTime = 30;
+            let timerInterval;
+            let breathPhase = 'ready'; // ready, inhale, hold, exhale
+            let phaseTimeout;
+
+            const circumference = 2 * Math.PI * 45;
+            timerProgress.style.strokeDasharray = `${circumference} ${circumference}`;
+            timerProgress.style.strokeDashoffset = 0; // Start full
+
+            function setProgress(percent) {
+                const offset = circumference - percent / 100 * circumference;
+                timerProgress.style.strokeDashoffset = offset;
+            }
+
+            function updateTimerDisplay() {
+                timeDisplay.textContent = timeLeft;
+                setProgress((timeLeft / totalTime) * 100);
+            }
+
+            function runBreathingCycle() {
+                if (!isRunning) return;
+
+                // 1. Inhale (4s)
+                breathPhase = 'inhale';
+                breathContainer.className = 'relative w-64 h-64 flex items-center justify-center mb-stack-lg state-inhale';
+                breathStateText.textContent = 'INHALE';
+                breathStateText.style.opacity = '1';
+                instructionText.textContent = 'Breathe in...';
+                instructionText.style.opacity = '1';
+                
+                phaseTimeout = setTimeout(() => {
+                    if (!isRunning) return;
+                    // 2. Hold (4s)
+                    breathPhase = 'hold';
+                    breathContainer.className = 'relative w-64 h-64 flex items-center justify-center mb-stack-lg state-hold';
+                    breathStateText.textContent = 'HOLD';
+                    instructionText.textContent = 'Hold...';
+                    
+                    phaseTimeout = setTimeout(() => {
+                        if (!isRunning) return;
+                        // 3. Exhale (4s)
+                        breathPhase = 'exhale';
+                        breathContainer.className = 'relative w-64 h-64 flex items-center justify-center mb-stack-lg state-exhale';
+                        breathStateText.textContent = 'EXHALE';
+                        instructionText.textContent = 'Breathe out...';
+                        
+                        phaseTimeout = setTimeout(() => {
+                            if (!isRunning) return;
+                            // Loop
+                            runBreathingCycle();
+                        }, 4000);
+                    }, 4000);
+                }, 4000);
+            }
+
+            function startTimer() {
+                isRunning = true;
+                iconPlayPause.textContent = 'pause';
+                subInstructionText.style.opacity = '0';
+                
+                if (breathPhase === 'ready') {
+                    runBreathingCycle();
+                }
+
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        stopTimer();
+                        instructionText.textContent = 'Session Complete';
+                        subInstructionText.textContent = 'Great job.';
+                        subInstructionText.style.opacity = '1';
+                        breathContainer.className = 'relative w-64 h-64 flex items-center justify-center mb-stack-lg';
+                        breathStateText.style.opacity = '0';
+                    }
+                }, 1000);
+            }
+
+            function pauseTimer() {
+                isRunning = false;
+                iconPlayPause.textContent = 'play_arrow';
+                clearInterval(timerInterval);
+                clearTimeout(phaseTimeout);
+                
+                // Keep current visual state, but update text to indicate pause
+                instructionText.textContent = 'Paused';
+            }
+
+            function resetTimer() {
+                pauseTimer();
+                timeLeft = totalTime;
+                breathPhase = 'ready';
+                updateTimerDisplay();
+                breathContainer.className = 'relative w-64 h-64 flex items-center justify-center mb-stack-lg';
+                breathStateText.style.opacity = '0';
+                instructionText.textContent = 'Take a moment.';
+                subInstructionText.textContent = 'Just breathe.';
+                subInstructionText.style.opacity = '1';
+                iconPlayPause.textContent = 'play_arrow';
+            }
+
+            btnPlayPause.addEventListener('click', () => {
+                if (isRunning) {
+                    pauseTimer();
+                } else {
+                    if (timeLeft > 0) {
+                        startTimer();
+                    } else {
+                        resetTimer();
+                        startTimer();
+                    }
+                }
+            });
+
+            btnReset.addEventListener('click', resetTimer);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Prakriti - Know Your Dosha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#545c70",
+                    "tertiary-fixed": "#dbe2fa",
+                    "on-background": "#131b2e",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-surface": "#131b2e",
+                    "surface-container-highest": "#dae2fd",
+                    "on-primary-container": "#fffbff",
+                    "on-error": "#ffffff",
+                    "surface": "#faf8ff",
+                    "tertiary-container": "#6d7489",
+                    "surface-bright": "#faf8ff",
+                    "secondary": "#7c43ab",
+                    "on-tertiary-fixed": "#141b2c",
+                    "background": "#faf8ff",
+                    "on-tertiary-container": "#fefcff",
+                    "tertiary-fixed-dim": "#bfc6dd",
+                    "surface-container-high": "#e2e7ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#dae2fd",
+                    "primary": "#4648d4",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#cb8ffd",
+                    "on-secondary-fixed-variant": "#632892",
+                    "on-surface-variant": "#464554",
+                    "secondary-fixed-dim": "#e0b6ff",
+                    "on-tertiary-fixed-variant": "#3f4759",
+                    "surface-container-low": "#f2f3ff",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "outline": "#767586",
+                    "surface-container": "#eaedff",
+                    "on-primary-fixed": "#07006c",
+                    "secondary-fixed": "#f2daff",
+                    "primary-fixed": "#e1e0ff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#283044",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#494bd6",
+                    "surface-dim": "#d2d9f4",
+                    "on-secondary-container": "#581d87",
+                    "inverse-primary": "#c0c1ff",
+                    "on-secondary-fixed": "#2d004f",
+                    "error": "#ba1a1a",
+                    "primary-container": "#6063ee",
+                    "outline-variant": "#c7c4d7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "40px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Sora"],
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["Sora"],
+                    "label-sm": ["Sora"],
+                    "headline-md": ["Playfair Display"],
+                    "label-md": ["Sora"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #f2f3ff 0%, #dae2fd 100%);
+            min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+        }
+
+        .dosha-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .dosha-card.expanded .dosha-content {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+        
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .dosha-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Vata Theme */
+        .theme-vata .glow { box-shadow: 0 10px 40px -10px rgba(70, 72, 212, 0.2); }
+        .theme-vata .icon-bg { background: linear-gradient(135deg, #e1e0ff, #c0c1ff); }
+        
+        /* Pitta Theme */
+        .theme-pitta .glow { box-shadow: 0 10px 40px -10px rgba(124, 67, 171, 0.2); }
+        .theme-pitta .icon-bg { background: linear-gradient(135deg, #f2daff, #e0b6ff); }
+        
+        /* Kapha Theme */
+        .theme-kapha .glow { box-shadow: 0 10px 40px -10px rgba(84, 92, 112, 0.2); }
+        .theme-kapha .icon-bg { background: linear-gradient(135deg, #dbe2fa, #bfc6dd); }
+    </style>
+</head>
+<body class="text-on-background relative pb-24 md:pb-0 overflow-x-hidden">
+<!-- TopAppBar (Web & Mobile Hybrid Setup) -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center backdrop-blur-xl border-b border-white/40 dark:border-white/10 shadow-sm bg-transparent md:px-margin-desktop">
+<div class="flex items-center gap-3 cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">settings_heart</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim md:font-display-lg md:text-display-lg">PRAKRITI</h1>
+<div class="flex items-center cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-white/40">
+<img alt="Mandala Logo" class="w-full h-full object-cover" data-alt="A minimalist, elegant mandala logo in deep indigo and silver, perfectly centered in a circle on a pristine white background. The intricate geometric patterns are highly detailed, symbolizing ancient wisdom with a modern, clean aesthetic. Soft, diffuse lighting enhances the premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlGa-uldrgv74M147nXNR6jpS9ldJM9NdCxZPxzg4ENzNgxVJ--qB0TX_aC6gr9WieiKH-tOnlO_PboSmRXxCgOvaygAzFTyCilNHX-SuHaVER_nhs-Gy1dDaLmBHyjJe8Dhw3J3DXNpjbCiAzu5ifANWlpWJwI9zFWbqsXhbgs4krS2l4l-hZbkiwEyoVd7lfIYliG1wApxPMNrikc1YQcPbWyRephOva51CaExP6VMGa11S8Qv1sAA"/>
+</div>
+</div>
+</header>
+<!-- SideNav (Desktop Only) -->
+<nav class="hidden md:flex fixed inset-y-0 left-0 z-[60] flex flex-col py-stack-md bg-surface/80 dark:bg-on-background/90 h-full w-80 rounded-r-xl backdrop-blur-xl border-r border-white/40 shadow-2xl pt-24">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A serene portrait of an Indian woman with calm eyes, wearing a simple organic cotton top in lavender. She is set against a soft, blurred bright background indicating a light, airy wellness space. High-end, clean aesthetic, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm6G7ZFUZeZI0Ks9w_9gMx2ePAgO1LBy2wRa4nQfvRV-NZKXFM_alrl7EcFQHicree0mOLZk-nhxDaCn4KUtdC0k3ULJVfpPfSF8v41Sf0HY0VVUA-XIw1XdFJ2ONFsXhZj3f6Vvsd8py1l0O_vVivsA11NB-40-OZheZJqs9oRv8HV5b2UtwPnikEVjlpLNNhQR9jhvWl0zcCe5SQQS5bul33mrbuOvrqegwGLN1vRMD1qWxKe-NW1Q"/>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed-dim">Anya Sharma</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Vata-Pitta Explorer</p>
+<p class="font-label-sm text-label-sm text-primary/70">Level 12 Seeker</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low mx-2 rounded-lg hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">wb_sunny</span>
+<span class="font-body-md text-body-md">Daily Rituals</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-md text-body-md">Dosha Guide</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low mx-2 rounded-lg hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">spa</span>
+<span class="font-body-md text-body-md">Harmony Maps</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low mx-2 rounded-lg hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-body-md text-body-md">Academy</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low mx-2 rounded-lg hover:pl-6 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Community</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-mobile md:pl-[360px] md:pr-margin-desktop md:pt-32 max-w-container-max mx-auto w-full pb-stack-lg relative z-10">
+<!-- Header Section -->
+<div class="mb-stack-lg text-center md:text-left">
+<h2 class="font-headline-md text-headline-md md:font-display-lg md:text-display-lg text-primary mb-unit">The Three Energies</h2>
+<p class="font-body-lg text-body-lg text-tertiary max-w-2xl">Discover the elemental forces that shape your physical and mental nature according to ancient Ayurvedic wisdom.</p>
+</div>
+<!-- Dosha Cards Container -->
+<div class="flex flex-col gap-stack-md">
+<!-- VATA Card -->
+<div class="dosha-card theme-vata glass-card p-6 glow cursor-pointer relative overflow-hidden" onclick="toggleCard(this)">
+<!-- Ambient Underglow -->
+<div class="absolute -inset-4 bg-primary/5 blur-2xl z-0 rounded-full"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full icon-bg flex items-center justify-center text-primary shadow-sm border border-white/50">
+<span class="material-symbols-outlined">air</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">VATA</h3>
+<p class="font-label-md text-label-md text-tertiary">The Explorer</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline expand-icon">keyboard_arrow_down</span>
+</div>
+<div class="dosha-content">
+<div class="pt-4 border-t border-white/30 mt-4 space-y-4">
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Elements</h4>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full font-label-md text-label-md text-primary">Air</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full font-label-md text-label-md text-primary">Space</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Qualities</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    Movement, creativity, and vitality. When balanced, Vata brings joy, flexibility, and a clear, alert mind.
+                                </p>
+</div>
+<div class="bg-surface-container/50 p-4 rounded-xl border border-white/20">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+                                    Balance Challenge
+                                </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Prone to anxiety, irregular digestion, and insomnia when overwhelmed by excessive movement or cold. Needs grounding routines.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PITTA Card -->
+<div class="dosha-card theme-pitta glass-card p-6 glow cursor-pointer relative overflow-hidden" onclick="toggleCard(this)">
+<!-- Ambient Underglow -->
+<div class="absolute -inset-4 bg-secondary/5 blur-2xl z-0 rounded-full"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full icon-bg flex items-center justify-center text-secondary shadow-sm border border-white/50">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-secondary">PITTA</h3>
+<p class="font-label-md text-label-md text-tertiary">The Transformer</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline expand-icon">keyboard_arrow_down</span>
+</div>
+<div class="dosha-content">
+<div class="pt-4 border-t border-white/30 mt-4 space-y-4">
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Elements</h4>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-md text-label-md text-secondary">Fire</span>
+<span class="px-3 py-1 bg-secondary-fixed rounded-full font-label-md text-label-md text-secondary">Water</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Qualities</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    Digestion, metabolism, and focus. When balanced, Pitta provides intelligence, courage, and strong digestion.
+                                </p>
+</div>
+<div class="bg-surface-container/50 p-4 rounded-xl border border-white/20">
+<h4 class="font-label-sm text-label-sm text-error uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+                                    Balance Challenge
+                                </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Susceptible to anger, inflammation, and burnout when overheated. Requires cooling environments and moderation.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- KAPHA Card -->
+<div class="dosha-card theme-kapha glass-card p-6 glow cursor-pointer relative overflow-hidden" onclick="toggleCard(this)">
+<!-- Ambient Underglow -->
+<div class="absolute -inset-4 bg-tertiary/5 blur-2xl z-0 rounded-full"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full icon-bg flex items-center justify-center text-tertiary shadow-sm border border-white/50">
+<span class="material-symbols-outlined">water_drop</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-tertiary">KAPHA</h3>
+<p class="font-label-md text-label-md text-tertiary-container">The Anchor</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline expand-icon">keyboard_arrow_down</span>
+</div>
+<div class="dosha-content">
+<div class="pt-4 border-t border-white/30 mt-4 space-y-4">
+<div>
+<h4 class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-2">Elements</h4>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-fixed rounded-full font-label-md text-label-md text-tertiary">Earth</span>
+<span class="px-3 py-1 bg-tertiary-fixed rounded-full font-label-md text-label-md text-tertiary">Water</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-2">Qualities</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    Structure, stability, and lubrication. When balanced, Kapha offers love, calmness, and strong immunity.
+                                </p>
+</div>
+<div class="bg-surface-container/50 p-4 rounded-xl border border-white/20">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+                                    Balance Challenge
+                                </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Can slip into lethargy, attachment, and congestion if too stagnant. Benefits from stimulation and active movement.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-6 md:pb-4 backdrop-blur-2xl border-t border-white/40 dark:border-white/10 shadow-[0_-10px_40px_-15px_rgba(70,72,212,0.3)] bg-white/50 dark:bg-on-background/30 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">explore</span>
+<span class="font-label-sm text-label-sm">Quest</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/20 rounded-full px-4 py-1 hover:text-primary transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">auto_stories</span>
+<span class="font-label-sm text-label-sm">Wisdom</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">flare</span>
+<span class="font-label-sm text-label-sm">Pulse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleCard(card) {
+            // Optional: Close others
+            // document.querySelectorAll('.dosha-card').forEach(c => {
+            //     if(c !== card) c.classList.remove('expanded');
+            // });
+            card.classList.toggle('expanded');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Panchamahabhuta Elements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Sora:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#545c70",
+                        "tertiary-fixed": "#dbe2fa",
+                        "on-background": "#131b2e",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-surface": "#131b2e",
+                        "surface-container-highest": "#dae2fd",
+                        "on-primary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "surface": "#faf8ff",
+                        "tertiary-container": "#6d7489",
+                        "surface-bright": "#faf8ff",
+                        "secondary": "#7c43ab",
+                        "on-tertiary-fixed": "#141b2c",
+                        "background": "#faf8ff",
+                        "on-tertiary-container": "#fefcff",
+                        "tertiary-fixed-dim": "#bfc6dd",
+                        "surface-container-high": "#e2e7ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "primary": "#4648d4",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#cb8ffd",
+                        "on-secondary-fixed-variant": "#632892",
+                        "on-surface-variant": "#464554",
+                        "secondary-fixed-dim": "#e0b6ff",
+                        "on-tertiary-fixed-variant": "#3f4759",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "outline": "#767586",
+                        "surface-container": "#eaedff",
+                        "on-primary-fixed": "#07006c",
+                        "secondary-fixed": "#f2daff",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#283044",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#494bd6",
+                        "surface-dim": "#d2d9f4",
+                        "on-secondary-container": "#581d87",
+                        "inverse-primary": "#c0c1ff",
+                        "on-secondary-fixed": "#2d004f",
+                        "error": "#ba1a1a",
+                        "primary-container": "#6063ee",
+                        "outline-variant": "#c7c4d7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Sora"],
+                        "headline-sm": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Sora"],
+                        "label-sm": ["Sora"],
+                        "headline-md": ["Playfair Display"],
+                        "label-md": ["Sora"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+        }
+        .element-node {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px -2px rgba(70, 72, 212, 0.1);
+        }
+        .element-node.active {
+            box-shadow: 0 0 30px 10px rgba(70, 72, 212, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.8);
+            transform: scale(1.15);
+            border-color: #4648d4;
+        }
+        .connection-line {
+            stroke-dasharray: 4 4;
+            animation: flowDash 20s linear infinite;
+        }
+        @keyframes flowDash {
+            to { stroke-dashoffset: -100; }
+        }
+        .star-bg {
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(124, 67, 171, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(70, 72, 212, 0.08) 0%, transparent 50%);
+        }
+        .ambient-underglow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(70,72,212,0.15) 0%, rgba(250,248,255,0) 70%);
+            filter: blur(20px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Mobile specific adjustments */
+        @media (max-width: 767px) {
+            .mobile-safe-bottom {
+                padding-bottom: 100px; /* Space for BottomNavBar */
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md star-bg overflow-x-hidden antialiased">
+<!-- Ambient Background Elements -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="120" id="mandala-pattern" patternunits="userSpaceOnUse" width="120" x="0" y="0">
+<circle cx="60" cy="60" fill="none" r="50" stroke="rgba(118, 117, 134, 0.1)" stroke-width="0.5"></circle>
+<circle cx="60" cy="60" fill="none" r="40" stroke="rgba(118, 117, 134, 0.1)" stroke-width="0.5"></circle>
+<path d="M 60 10 L 60 110 M 10 60 L 110 60 M 24.6 24.6 L 95.4 95.4 M 24.6 95.4 L 95.4 24.6" stroke="rgba(118, 117, 134, 0.05)" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#mandala-pattern)" height="100%" width="100%" x="0" y="0"></rect>
+</svg>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center bg-transparent backdrop-blur-xl border-b border-white/40 dark:border-white/10 shadow-sm w-full top-0 left-0 hidden md:flex">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">settings_heart</span>
+<h1 class="font-display-lg tracking-tighter text-primary dark:text-primary-fixed-dim">PRAKRITI</h1>
+</div>
+<div class="cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/40 flex items-center justify-center overflow-hidden">
+<img alt="Mandala Logo" class="w-full h-full object-cover" data-alt="A minimalist, geometric mandala design rendered in soft lavender and deep indigo tones on a pure white background. The mandala features intricate, razor-thin lines and precise symmetry, embodying a modern, tech-forward interpretation of ancient spiritual geometry. The style is ultra-high-definition, flat vector aesthetic, and pristine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgSgYqHIjd3EuwzZ8Jxksv-U8tmID8QvK7evsNVS9KBpoFC8gcMEdxVdZ7eFmkg5UFNsjngIBYQ4DPsxuL7mno8upzVipa7FHYIj1TcyfRz7mDriHcY1Da2Yhg-XBurKfHSwIkV1q5yyhd5-jdMmrTJ5KiQBBP5ky8OphRzQSKH6BLJSKnXepx0dMaMM1kBoHujYbZ-TA6ShWbEJ6u0FKPte-QWyQPtCVpzGx9HSVq_awpPtFhaohSJg"/>
+</div>
+</div>
+</header>
+<!-- Mobile TopAppBar -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile py-4 flex justify-between items-center bg-transparent backdrop-blur-xl border-b border-white/40 dark:border-white/10 shadow-sm w-full top-0 left-0 md:hidden">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">settings_heart</span>
+<h1 class="font-display-lg-mobile tracking-tighter text-primary dark:text-primary-fixed-dim">PRAKRITI</h1>
+</div>
+<div class="cursor-pointer active:scale-95 duration-300 hover:opacity-80 transition-opacity">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/40 flex items-center justify-center overflow-hidden">
+<img alt="Mandala Logo" class="w-full h-full object-cover" data-alt="A minimalist, geometric mandala design rendered in soft lavender and deep indigo tones on a pure white background. The mandala features intricate, razor-thin lines and precise symmetry, embodying a modern, tech-forward interpretation of ancient spiritual geometry. The style is ultra-high-definition, flat vector aesthetic, and pristine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPw_eyVG-RMcfIUTtmqSx3wAnE5d9qPXuO2PloMAAoYY5Q2JqiYPJ69sVK1oaPyZ7fbDKKjASViCuv3n8QEYX1_eHBqcnyhJy4w9iIvt21z4w8F5sTJR4zhOMew3kYVWqdJ2F90ABDj4ADDGM8aSGCPJ0cJg0gZ1JG4Rpkyvn_rUR6SWQaxQpwfX_Pm3VdpzaDL2xOUaSC-fj2K-jT-VgIIjzVa6hevG1E23frE3ldaf-pOQJF2SaQVg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-[100px] px-margin-mobile md:px-margin-desktop pb-stack-lg max-w-container-max mx-auto mobile-safe-bottom flex flex-col items-center min-h-screen">
+<!-- Header Section -->
+<div class="text-center mb-stack-lg w-full max-w-2xl mt-4">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-fixed-dim/30 border border-white/50 mb-4 backdrop-blur-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-primary tracking-widest uppercase text-xs font-semibold">Panchamahabhuta</span>
+</div>
+<h2 class="font-headline-sm md:font-headline-md text-on-surface mb-2">The Five Elements</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Discover the cosmic forces shaping your unique constitution. You are strongly resonant with <strong class="text-primary font-medium">Agni</strong> (Fire).</p>
+</div>
+<!-- Interactive Oracle Visualization -->
+<div class="relative w-full max-w-[340px] md:max-w-[500px] aspect-square flex items-center justify-center mb-stack-lg">
+<!-- Central Ambient Glow -->
+<div class="ambient-underglow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/20 blur-3xl"></div>
+<!-- SVG Connections -->
+<svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" viewbox="0 0 500 500">
+<circle class="connection-line" cx="250" cy="250" fill="none" r="180" stroke="rgba(192, 193, 255, 0.2)" stroke-width="1"></circle>
+<circle cx="250" cy="250" fill="none" r="100" stroke="rgba(192, 193, 255, 0.1)" stroke-width="0.5"></circle>
+<!-- Pentagram Lines -->
+<polygon fill="none" points="250,70 421,194 356,395 144,395 79,194" stroke="rgba(118, 117, 134, 0.15)" stroke-width="1"></polygon>
+<!-- Inner Star -->
+<polygon fill="none" points="250,70 356,395 79,194 421,194 144,395" stroke="rgba(118, 117, 134, 0.08)" stroke-width="0.5"></polygon>
+<!-- Active Connection Highlighting (Vata/Pitta/Kapha Logic) -->
+<!-- Pitta Highlight (Agni) -->
+<line opacity="0.6" stroke="#4648d4" stroke-width="2" x1="250" x2="250" y1="250" y2="70"></line>
+<!-- Vata Connect (Akasha + Vayu) -->
+<path d="M 421 194 Q 388 294 356 395" fill="none" opacity="0.4" stroke="#7c43ab" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Kapha Connect (Jala + Prithvi) -->
+<path d="M 79 194 Q 111 294 144 395" fill="none" opacity="0.4" stroke="#545c70" stroke-dasharray="4 4" stroke-width="1.5"></path>
+</svg>
+<!-- Elements Container -->
+<div class="relative w-full h-full z-10">
+<!-- 1. AGNI (Fire) - Top Center (Active) -->
+<div class="absolute top-[14%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<button class="element-node active w-16 h-16 md:w-20 md:h-20 rounded-full glass-card flex items-center justify-center bg-white/80 cursor-pointer mb-2 relative group">
+<span class="absolute inset-0 rounded-full border-2 border-primary opacity-50 scale-110 animate-ping" style="animation-duration: 3s;"></span>
+<span class="material-symbols-outlined text-primary text-2xl md:text-3xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</button>
+<div class="text-center backdrop-blur-sm bg-white/30 px-3 py-1 rounded-full border border-white/20">
+<span class="font-label-md text-on-surface block text-sm font-semibold">Agni</span>
+<span class="font-label-sm text-primary block text-[10px]">Fire • Pitta</span>
+</div>
+</div>
+<!-- 2. VAYU (Air) - Top Right -->
+<div class="absolute top-[38.8%] right-[5.8%] translate-x-0 -translate-y-1/2 flex flex-col items-center">
+<button class="element-node w-14 h-14 md:w-16 md:h-16 rounded-full glass-card flex items-center justify-center cursor-pointer mb-2 hover:bg-white/60">
+<span class="material-symbols-outlined text-secondary text-xl md:text-2xl">air</span>
+</button>
+<div class="text-center">
+<span class="font-label-md text-on-surface-variant block text-xs">Vayu</span>
+<span class="font-label-sm text-secondary block text-[9px] opacity-70">Air</span>
+</div>
+</div>
+<!-- 3. AKASHA (Space) - Bottom Right -->
+<div class="absolute bottom-[21%] right-[21%] translate-x-1/2 translate-y-1/2 flex flex-col items-center">
+<button class="element-node w-14 h-14 md:w-16 md:h-16 rounded-full glass-card flex items-center justify-center cursor-pointer mb-2 hover:bg-white/60">
+<span class="material-symbols-outlined text-secondary text-xl md:text-2xl">language</span>
+</button>
+<div class="text-center mt-1">
+<span class="font-label-md text-on-surface-variant block text-xs">Akasha</span>
+<span class="font-label-sm text-secondary block text-[9px] opacity-70">Space</span>
+</div>
+</div>
+<!-- 4. PRITHVI (Earth) - Bottom Left -->
+<div class="absolute bottom-[21%] left-[21%] -translate-x-1/2 translate-y-1/2 flex flex-col items-center">
+<button class="element-node w-14 h-14 md:w-16 md:h-16 rounded-full glass-card flex items-center justify-center cursor-pointer mb-2 hover:bg-white/60">
+<span class="material-symbols-outlined text-tertiary text-xl md:text-2xl">public</span>
+</button>
+<div class="text-center mt-1">
+<span class="font-label-md text-on-surface-variant block text-xs">Prithvi</span>
+<span class="font-label-sm text-tertiary block text-[9px] opacity-70">Earth</span>
+</div>
+</div>
+<!-- 5. JALA (Water) - Top Left -->
+<div class="absolute top-[38.8%] left-[5.8%] -translate-x-0 -translate-y-1/2 flex flex-col items-center">
+<button class="element-node w-14 h-14 md:w-16 md:h-16 rounded-full glass-card flex items-center justify-center cursor-pointer mb-2 hover:bg-white/60">
+<span class="material-symbols-outlined text-tertiary text-xl md:text-2xl">water_drop</span>
+</button>
+<div class="text-center">
+<span class="font-label-md text-on-surface-variant block text-xs">Jala</span>
+<span class="font-label-sm text-tertiary block text-[9px] opacity-70">Water</span>
+</div>
+</div>
+<!-- Center Node (Core) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full glass-card bg-surface-container-high/40 flex items-center justify-center border-white/50 backdrop-blur-md">
+<span class="material-symbols-outlined text-primary-fixed-dim text-lg">spa</span>
+</div>
+</div>
+</div>
+<!-- Detail Card (Contextual info for active element) -->
+<div class="w-full max-w-md glass-card p-6 mt-4 md:mt-8 relative overflow-hidden">
+<!-- Subtle gradient backdrop for card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/4"></div>
+<div class="flex items-start justify-between relative z-10 mb-4">
+<div>
+<h3 class="font-headline-sm text-primary mb-1">Agni • Fire</h3>
+<p class="font-label-md text-on-surface-variant opacity-80">The element of transformation</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm md:text-base leading-relaxed">
+                As a Pitta dominant individual, Agni governs your digestion, intelligence, and visual perception. It brings warmth, sharp intellect, and strong metabolism, but requires balancing to prevent burnout.
+            </p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-sm">
+<span class="font-label-md text-on-surface-variant">Associated Dosha</span>
+<span class="font-label-md text-primary bg-primary/10 px-3 py-1 rounded-full">Pitta</span>
+</div>
+<div class="flex items-center justify-between text-sm border-t border-white/30 pt-3">
+<span class="font-label-md text-on-surface-variant">Sensory Organ</span>
+<span class="font-label-md text-on-surface">Eyes (Vision)</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-6 md:pb-4 bg-white/50 dark:bg-on-background/30 backdrop-blur-2xl border-t border-white/40 dark:border-white/10 shadow-[0_-10px_40px_-15px_rgba(70,72,212,0.3)] rounded-t-xl md:hidden">
+<!-- Tab 1: Quest -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined mb-1">explore</span>
+<span class="font-label-sm text-label-sm">Quest</span>
+</div>
+<!-- Tab 2: Wisdom (Active - Best semantic match for Oracle/Star Map learning) -->
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/20 rounded-full px-4 py-1 hover:text-primary transition-all duration-300 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label-sm text-label-sm font-bold">Wisdom</span>
+</div>
+<!-- Tab 3: Pulse -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined mb-1">flare</span>
+<span class="font-label-sm text-label-sm">Pulse</span>
+</div>
+<!-- Tab 4: Profile -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all duration-300 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Simple interaction script for visual feedback -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nodes = document.querySelectorAll('.element-node');
+            
+            nodes.forEach(node => {
+                node.addEventListener('click', function() {
+                    // Remove active from all
+                    nodes.forEach(n => {
+                        n.classList.remove('active');
+                        n.classList.add('hover:bg-white/60');
+                        n.classList.remove('bg-white/80');
+                        
+                        // Reset fill state if material symbol is present
+                        const icon = n.querySelector('.material-symbols-outlined');
+                        if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                    });
+                    
+                    // Add active to clicked
+                    this.classList.add('active');
+                    this.classList.remove('hover:bg-white/60');
+                    this.classList.add('bg-white/80');
+                    
+                    // Set fill state for active
+                    const activeIcon = this.querySelector('.material-symbols-outlined');
+                    if(activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+                });
+            });
+        });
+    </script>
+</body></html>
