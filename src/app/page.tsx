@@ -26,6 +26,7 @@ import { YogaChallengeScreen } from '../components/screens/YogaChallengeScreen';
 import { MythOrFactScreen } from '../components/screens/MythOrFactScreen';
 import { DoshaMatchScreen } from '../components/screens/DoshaMatchScreen';
 import { PassportScreen } from '../components/screens/PassportScreen';
+import { ScanStallScreen } from '../components/screens/ScanStallScreen';
 import { FinalClubScreen } from '../components/screens/FinalClubScreen';
 
 export default function Home() {
@@ -106,6 +107,7 @@ export default function Home() {
                 onStartQuest={() => handleNavigate('quest')}
                 onWhatIsPrakriti={() => handleNavigate('welcome')}
                 onExploreArcade={() => handleNavigate('arcade_hub')}
+                onOpenScanStall={() => handleNavigate('scan_stall')}
               />
             )}
 
@@ -173,6 +175,13 @@ export default function Home() {
                 scores={scores}
                 onRetakeQuest={() => handleNavigate('quest')}
                 onNavigate={handleNavigate}
+              />
+            )}
+
+            {currentScreen === 'scan_stall' && (
+              <ScanStallScreen
+                onBack={() => handleNavigate('landing')}
+                onStartQuest={() => handleNavigate('quest')}
               />
             )}
 

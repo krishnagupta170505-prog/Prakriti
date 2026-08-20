@@ -8,12 +8,14 @@ interface LandingHeroProps {
   onStartQuest: () => void;
   onWhatIsPrakriti: () => void;
   onExploreArcade: () => void;
+  onOpenScanStall?: () => void;
 }
 
 export const LandingHero: React.FC<LandingHeroProps> = ({
   onStartQuest,
   onWhatIsPrakriti,
   onExploreArcade,
+  onOpenScanStall,
 }) => {
   return (
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 md:px-8 pt-16 pb-16 overflow-hidden">
@@ -98,17 +100,32 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
           Just 8 questions. No boring test.
         </p>
 
-        {/* Quick link to Arcade */}
-        <button
-          onClick={() => {
-            soundManager.playTap();
-            onExploreArcade();
-          }}
-          className="mt-1 text-xs font-label-sm text-on-surface-variant/80 hover:text-primary transition-colors flex items-center gap-1 uppercase tracking-widest font-semibold"
-        >
-          <span className="material-symbols-outlined text-sm">casino</span>
-          <span>OR EXPLORE THE ARCADE GAMES</span>
-        </button>
+        {/* Bottom links */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mt-1">
+          <button
+            onClick={() => {
+              soundManager.playTap();
+              onExploreArcade();
+            }}
+            className="text-xs font-label-sm text-on-surface-variant/80 hover:text-primary transition-colors flex items-center gap-1 uppercase tracking-widest font-semibold"
+          >
+            <span className="material-symbols-outlined text-sm">casino</span>
+            <span>EXPLORE ARCADE GAMES</span>
+          </button>
+
+          {onOpenScanStall && (
+            <button
+              onClick={() => {
+                soundManager.playTap();
+                onOpenScanStall();
+              }}
+              className="text-xs font-label-sm text-secondary hover:text-primary transition-colors flex items-center gap-1 uppercase tracking-widest font-semibold"
+            >
+              <span className="material-symbols-outlined text-sm">qr_code_2</span>
+              <span>STALL QR STANDEE</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Subtle Underglow */}

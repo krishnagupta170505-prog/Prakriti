@@ -7,9 +7,15 @@ interface StallModeBarProps {
   isActive: boolean;
   onReset: () => void;
   onExitStallMode: () => void;
+  onOpenScanStall?: () => void;
 }
 
-export const StallModeBar: React.FC<StallModeBarProps> = ({ isActive, onReset, onExitStallMode }) => {
+export const StallModeBar: React.FC<StallModeBarProps> = ({
+  isActive,
+  onReset,
+  onExitStallMode,
+  onOpenScanStall,
+}) => {
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -88,6 +94,20 @@ export const StallModeBar: React.FC<StallModeBarProps> = ({ isActive, onReset, o
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {onOpenScanStall && (
+            <button
+              onClick={() => {
+                soundManager.playTap();
+                onOpenScanStall();
+              }}
+              className="px-2.5 py-1 rounded-full bg-slate-950/15 hover:bg-slate-950/25 text-slate-950 flex items-center gap-1 transition-colors text-[11px] sm:text-xs font-bold"
+              title="Open Printable / Display Stall QR Standee"
+            >
+              <span className="material-symbols-outlined text-[15px]">qr_code_2</span>
+              <span>QR STANDEE</span>
+            </button>
+          )}
+
           <button
             onClick={() => {
               soundManager.playTap();

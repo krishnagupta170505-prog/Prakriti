@@ -84,8 +84,25 @@ export const Header: React.FC<HeaderProps> = ({
           </h1>
         </button>
 
-        {/* Trailing Actions: Stall Mode, Sound Mute, Avatar */}
-        <div className="flex items-center gap-2 md:gap-3">
+        {/* Trailing Actions: QR Standee, Stall Mode, Sound Mute, Avatar */}
+        <div className="flex items-center gap-2 md:gap-2.5">
+          {/* Quick QR Standee Poster button */}
+          <button
+            onClick={() => {
+              soundManager.playTap();
+              onNavigate('scan_stall');
+            }}
+            className={`p-2 rounded-full transition-all active:scale-95 flex items-center justify-center ${
+              currentScreen === 'scan_stall'
+                ? 'bg-primary text-white shadow-sm'
+                : 'text-on-surface-variant hover:text-primary hover:bg-white/40'
+            }`}
+            title="Open Stall QR Standee"
+            aria-label="Stall QR Standee"
+          >
+            <span className="material-symbols-outlined text-[20px]">qr_code_2</span>
+          </button>
+
           {/* Sound Mute Toggle */}
           <button
             onClick={handleToggleMute}
@@ -138,6 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
         isActive={isStallMode}
         onReset={onResetSession}
         onExitStallMode={onToggleStallMode}
+        onOpenScanStall={() => onNavigate('scan_stall')}
       />
     </div>
   );
