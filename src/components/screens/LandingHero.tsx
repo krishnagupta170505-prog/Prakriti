@@ -22,29 +22,8 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
       {/* Interactive WebGL Background Shader from Stitch */}
       <WebGLShader type="elemental" opacity={0.65} className="absolute inset-0 w-full h-full z-0 pointer-events-none" />
 
-      {/* Floating Ethereal Elements Layer */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
-        <div className="relative w-full max-w-[850px] h-full">
-          <span className="floating-label absolute top-[16%] left-[8%] font-label-md text-sm md:text-base text-primary/80 tracking-widest uppercase font-bold">
-            AKASHA • SPACE
-          </span>
-          <span className="floating-label absolute top-[26%] right-[10%] font-label-md text-sm md:text-base text-secondary/80 tracking-widest uppercase font-bold">
-            VAYU • AIR
-          </span>
-          <span className="floating-label absolute bottom-[30%] left-[12%] font-label-md text-sm md:text-base text-amber-600/90 tracking-widest uppercase font-bold">
-            AGNI • FIRE
-          </span>
-          <span className="floating-label absolute bottom-[20%] right-[18%] font-label-md text-sm md:text-base text-sky-600/90 tracking-widest uppercase font-bold">
-            JALA • WATER
-          </span>
-          <span className="floating-label absolute top-[46%] left-[4%] font-label-md text-sm md:text-base text-emerald-700/80 tracking-widest uppercase font-bold">
-            PRITHVI • EARTH
-          </span>
-        </div>
-      </div>
-
       {/* Hero Content Glassmorphic Container */}
-      <div className="glass-card rounded-3xl p-6 sm:p-10 md:p-12 text-center max-w-2xl mx-auto mt-2 relative z-20 flex flex-col items-center gap-4 shadow-2xl backdrop-blur-2xl border border-white/60 bg-white/60">
+      <div className="glass-card rounded-3xl p-6 sm:p-10 md:p-12 text-center max-w-2xl mx-auto mt-2 relative z-20 flex flex-col items-center gap-4 shadow-2xl backdrop-blur-2xl border border-white/60 bg-white/60 animate-fadeIn">
         {/* Decorative mandala icon */}
         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-1 border border-primary/20 shadow-inner">
           <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
